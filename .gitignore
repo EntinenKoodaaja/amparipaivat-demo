@@ -1,0 +1,23 @@
+# dependencies
+node_modules
+
+# build
+dist
+dist-ssr
+
+# logs
+*.log
+npm-debug.log*
+
+# env / secrets
+.env
+.env.local
+.env.*.local
+
+# editor
+.vscode
+.idea
+.DS_Store
+
+# claude code local settings
+.claude/

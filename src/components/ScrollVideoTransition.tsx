@@ -1,0 +1,39 @@
+import { useEffect, useRef } from 'react';
+
+export default function ScrollVideoTransition() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.currentTime = 0;
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.3 },
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section className="relative h-screen overflow-hidden">
+      <video
+        ref={videoRef}
+        src="/tokmanni-bucket.mp4"
+        className="absolute inset-0 w-full h-full object-cover"
+        muted
+        playsInline
+        preload="auto"
+      />
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+    </section>
+  );
+}

@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@theme {
+  --color-tokmanni-red: #E3000F;
+  --color-tokmanni-red-dark: #B8000C;
+  --font-sans: 'Inter', 'Helvetica Neue', system-ui, sans-serif;
+}
