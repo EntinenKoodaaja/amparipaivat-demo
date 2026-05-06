@@ -9,6 +9,40 @@ export default function Hero() {
         <div className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-orange-200 blur-3xl" />
       </div>
 
+      {/* Scrolling marquee text — taustakerros */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+        <div className="absolute top-[18%] left-0 right-0 overflow-hidden -rotate-3">
+          <div
+            className="flex whitespace-nowrap opacity-[0.10]"
+            style={{ animation: 'marquee 35s linear infinite' }}
+          >
+            {Array.from({ length: 24 }).map((_, i) => (
+              <span
+                key={i}
+                className="text-6xl sm:text-7xl md:text-8xl font-black uppercase tracking-tight text-white px-6"
+              >
+                Ämpäripäivät 2026 ·
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="absolute bottom-[22%] left-0 right-0 overflow-hidden rotate-2">
+          <div
+            className="flex whitespace-nowrap opacity-[0.08]"
+            style={{ animation: 'marquee-reverse 45s linear infinite' }}
+          >
+            {Array.from({ length: 24 }).map((_, i) => (
+              <span
+                key={i}
+                className="text-6xl sm:text-7xl md:text-8xl font-black uppercase tracking-tight text-yellow-200 px-6"
+              >
+                Ämpäripäivät 2026 ·
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="relative max-w-7xl mx-auto w-full px-5 sm:px-6 grid md:grid-cols-[1fr_1.25fr] gap-2 md:gap-4 items-center min-h-screen py-12 sm:py-20 md:py-28">
         {/* Left: text content */}
         <div className="text-center md:text-left">

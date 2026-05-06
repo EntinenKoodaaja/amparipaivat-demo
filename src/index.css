@@ -5,3 +5,13 @@
   --color-tokmanni-red-dark: #B8000C;
   --font-sans: 'Inter', 'Helvetica Neue', system-ui, sans-serif;
 }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
