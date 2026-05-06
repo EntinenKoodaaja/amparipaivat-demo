@@ -4,7 +4,7 @@ import TokmanniBucket from './TokmanniBucket';
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b-4 border-tokmanni-red shadow-sm">
-      <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between gap-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-3 sm:gap-6">
 
         {/* vasen: logo + ämpäripäivät */}
         <div className="flex items-center gap-4 min-w-0">

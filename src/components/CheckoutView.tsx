@@ -66,7 +66,7 @@ export default function CheckoutView({ selectedProducts, bucketName, onBack }: P
       animate="visible"
       className="min-h-screen bg-neutral-50"
     >
-      <div className="max-w-2xl mx-auto px-6 py-10">
+      <div className="max-w-2xl mx-auto px-5 sm:px-6 py-6 sm:py-10">
 
         {/* Takaisin-linkki */}
         <motion.button
@@ -79,16 +79,16 @@ export default function CheckoutView({ selectedProducts, bucketName, onBack }: P
 
         {/* 1. TILAUKSEN YHTEENVETO */}
         <motion.div variants={itemVariants} className="bg-white rounded-2xl border-2 border-neutral-100 shadow-sm overflow-hidden mb-6">
-          <div className="bg-tokmanni-red px-6 py-5">
-            <h1 className="text-white font-black text-2xl sm:text-3xl leading-tight flex items-center gap-3">
-              Sinun ämpärisi <TokmanniBucket className="h-9 w-auto" />
+          <div className="bg-tokmanni-red px-5 sm:px-6 py-4 sm:py-5">
+            <h1 className="text-white font-black text-xl sm:text-2xl md:text-3xl leading-tight flex items-center gap-2 sm:gap-3">
+              Sinun ämpärisi <TokmanniBucket className="h-7 sm:h-9 w-auto" />
             </h1>
             {bucketName && bucketName !== 'Oma ämpäri' && (
               <p className="text-white/80 font-bold mt-1">{bucketName}</p>
             )}
           </div>
 
-          <ul className="divide-y divide-neutral-100 px-6">
+          <ul className="divide-y divide-neutral-100 px-5 sm:px-6">
             {selectedProducts.map((p) => (
               <li key={p.id} className="flex items-center gap-3 py-3">
                 <span className="text-xl leading-none">{p.ikoni}</span>
@@ -97,7 +97,7 @@ export default function CheckoutView({ selectedProducts, bucketName, onBack }: P
               </li>
             ))}
             {/* Ämpäri — ilmainen ≥5 tuotteella, muuten 3,99 € */}
-            <li className={`flex items-center gap-3 py-3 -mx-6 px-6 ${hasBonus ? 'bg-yellow-50' : ''}`}>
+            <li className={`flex items-center gap-3 py-3 -mx-5 sm:-mx-6 px-5 sm:px-6 ${hasBonus ? 'bg-yellow-50' : ''}`}>
               <TokmanniBucket className="h-7 w-auto flex-shrink-0" />
               <div className="flex-1">
                 <span className="font-medium text-neutral-800">{BONUS_PRODUCT.nimi}</span>
@@ -112,17 +112,17 @@ export default function CheckoutView({ selectedProducts, bucketName, onBack }: P
             </li>
           </ul>
 
-          <div className="flex items-center justify-between px-6 py-4 border-t-2 border-neutral-100 bg-neutral-50">
-            <span className="font-black text-neutral-700 uppercase tracking-wide text-sm">
+          <div className="flex items-center justify-between px-5 sm:px-6 py-4 border-t-2 border-neutral-100 bg-neutral-50">
+            <span className="font-black text-neutral-700 uppercase tracking-wide text-xs sm:text-sm">
               Tuotteet yhteensä
             </span>
-            <span className="text-2xl font-black text-tokmanni-red">{fmt(productsTotal)}</span>
+            <span className="text-xl sm:text-2xl font-black text-tokmanni-red">{fmt(productsTotal)}</span>
           </div>
         </motion.div>
 
         {/* 2. TOIMITUSTAPA */}
         <motion.div variants={itemVariants} className="mb-6">
-          <h2 className="font-black text-xl mb-3 text-neutral-900">Toimitustapa</h2>
+          <h2 className="font-black text-lg sm:text-xl mb-3 text-neutral-900">Toimitustapa</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             {DELIVERY_OPTIONS.map((opt) => {
               const isSelected = delivery === opt.id;
@@ -130,7 +130,7 @@ export default function CheckoutView({ selectedProducts, bucketName, onBack }: P
                 <button
                   key={opt.id}
                   onClick={() => setDelivery(opt.id)}
-                  className={`text-left rounded-2xl border-2 p-5 transition-all ${
+                  className={`text-left rounded-2xl border-2 p-4 sm:p-5 transition-all ${
                     isSelected
                       ? 'border-tokmanni-red bg-red-50'
                       : 'border-neutral-200 bg-white hover:border-neutral-300'
@@ -158,7 +158,7 @@ export default function CheckoutView({ selectedProducts, bucketName, onBack }: P
         </motion.div>
 
         {/* 3. LOPPUSUMMA */}
-        <motion.div variants={itemVariants} className="bg-white rounded-2xl border-2 border-neutral-100 shadow-sm px-6 py-5 mb-6 space-y-2">
+        <motion.div variants={itemVariants} className="bg-white rounded-2xl border-2 border-neutral-100 shadow-sm px-5 sm:px-6 py-4 sm:py-5 mb-6 space-y-2">
           <div className="flex justify-between text-neutral-600 font-medium">
             <span>Tuotteet ({selectedProducts.length} kpl)</span>
             <span>{fmt(productsTotal)}</span>
@@ -168,8 +168,8 @@ export default function CheckoutView({ selectedProducts, bucketName, onBack }: P
             <span>{deliveryCost === 0 ? 'Ilmainen' : fmt(deliveryCost)}</span>
           </div>
           <div className="flex justify-between items-baseline pt-3 border-t-2 border-neutral-100">
-            <span className="font-black text-neutral-900 text-lg uppercase tracking-wide">Yhteensä</span>
-            <span className="font-black text-tokmanni-red text-3xl">{fmt(grandTotal)}</span>
+            <span className="font-black text-neutral-900 text-base sm:text-lg uppercase tracking-wide">Yhteensä</span>
+            <span className="font-black text-tokmanni-red text-2xl sm:text-3xl">{fmt(grandTotal)}</span>
           </div>
         </motion.div>
 
@@ -178,10 +178,10 @@ export default function CheckoutView({ selectedProducts, bucketName, onBack }: P
           <motion.button
             whileTap={{ scale: 0.97 }}
             onClick={() => setOrdered(true)}
-            className="w-full bg-tokmanni-red text-white font-black py-5 rounded-full uppercase tracking-wider text-lg shadow-lg hover:bg-tokmanni-red-dark transition-colors"
+            className="w-full bg-tokmanni-red text-white font-black py-4 sm:py-5 rounded-full uppercase tracking-wider text-base sm:text-lg shadow-lg hover:bg-tokmanni-red-dark transition-colors"
           >
-            <span className="inline-flex items-center gap-3">
-              Tilaa ämpäri! <TokmanniBucket className="h-7 w-auto" />
+            <span className="inline-flex items-center gap-2 sm:gap-3">
+              Tilaa ämpäri! <TokmanniBucket className="h-6 sm:h-7 w-auto" />
             </span>
           </motion.button>
         </motion.div>
@@ -203,21 +203,21 @@ export default function CheckoutView({ selectedProducts, bucketName, onBack }: P
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: 'spring', stiffness: 260, damping: 18 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-3xl p-10 max-w-md w-full text-center shadow-2xl"
+              className="bg-white rounded-3xl p-6 sm:p-10 max-w-md w-full text-center shadow-2xl"
             >
-              <div className="text-7xl mb-4">🎉</div>
-              <h2 className="text-3xl font-black text-tokmanni-red mb-2">
+              <div className="text-6xl sm:text-7xl mb-3 sm:mb-4">🎉</div>
+              <h2 className="text-2xl sm:text-3xl font-black text-tokmanni-red mb-2">
                 Tilaus vastaanotettu!
               </h2>
-              <p className="text-neutral-600 font-medium text-lg mb-6">
+              <p className="text-neutral-600 font-medium text-base sm:text-lg mb-4 sm:mb-6">
                 Saat vahvistuksen sähköpostiisi.
               </p>
-              <p className="text-neutral-400 text-sm mb-6">
+              <p className="text-neutral-400 text-sm mb-4 sm:mb-6">
                 (Tämä on demo — oikeaa tilausta ei lähetetty)
               </p>
               <button
                 onClick={() => setOrdered(false)}
-                className="bg-tokmanni-red text-white font-black px-8 py-3 rounded-full uppercase tracking-wider hover:bg-tokmanni-red-dark transition-colors"
+                className="bg-tokmanni-red text-white font-black px-6 sm:px-8 py-3 rounded-full uppercase tracking-wider hover:bg-tokmanni-red-dark transition-colors text-sm sm:text-base"
               >
                 Sulje
               </button>

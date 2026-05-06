@@ -82,14 +82,14 @@ export default function BucketAnimation({ open, selectedIds, onClose, onCheckout
               e.stopPropagation();
               onClose();
             }}
-            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white text-tokmanni-red font-black text-xl shadow-lg hover:scale-110 transition-transform z-10"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white text-tokmanni-red font-black text-xl shadow-lg hover:scale-110 transition-transform z-10"
             aria-label="Sulje"
           >
             ×
           </button>
 
           {/* Lavastus */}
-          <div className="relative w-full max-w-2xl h-[600px] flex items-end justify-center"
+          <div className="relative w-full max-w-2xl h-[80vh] sm:h-[600px] px-4 flex items-end justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Lentävät tuotteet */}
@@ -97,7 +97,7 @@ export default function BucketAnimation({ open, selectedIds, onClose, onCheckout
               <motion.div
                 key={p.id}
                 initial={{
-                  x: randomBetween(-280, 280),
+                  x: randomBetween(-180, 180),
                   y: -400,
                   rotate: randomBetween(-180, 180),
                   scale: 1.4,
@@ -116,7 +116,7 @@ export default function BucketAnimation({ open, selectedIds, onClose, onCheckout
                   ease: [0.25, 1.5, 0.5, 1],
                   opacity: { times: [0, 0.2, 0.8, 1], duration: 0.9, delay: i * 0.18 },
                 }}
-                className="absolute bottom-32 text-6xl drop-shadow-2xl"
+                className="absolute bottom-28 sm:bottom-32 text-5xl sm:text-6xl drop-shadow-2xl"
                 style={{ filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.3))' }}
               >
                 {p.ikoni}
@@ -134,7 +134,7 @@ export default function BucketAnimation({ open, selectedIds, onClose, onCheckout
               transition={{ duration: 0.6 }}
             >
               <div className="relative">
-                <TokmanniBucket className="h-56 w-auto drop-shadow-2xl" />
+                <TokmanniBucket className="h-40 sm:h-56 w-auto drop-shadow-2xl" />
 
                 {/* "Täyttyminen" — keltainen ylivuoto-glow ämpärin yläpuolella */}
                 <motion.div
@@ -157,7 +157,7 @@ export default function BucketAnimation({ open, selectedIds, onClose, onCheckout
                 initial={{ scale: 0, rotate: -30 }}
                 animate={{ scale: 1, rotate: phase === 'confetti' ? [1, 1.2, 1] : 1 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 12 }}
-                className="absolute -top-4 -right-8 bg-yellow-300 text-tokmanni-red font-black text-2xl rounded-full w-20 h-20 flex items-center justify-center shadow-xl border-4 border-white"
+                className="absolute -top-3 -right-3 sm:-top-4 sm:-right-8 bg-yellow-300 text-tokmanni-red font-black text-xl sm:text-2xl rounded-full w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center shadow-xl border-4 border-white"
               >
                 {items.length}
               </motion.div>
@@ -188,12 +188,12 @@ export default function BucketAnimation({ open, selectedIds, onClose, onCheckout
                   animate={{ y: 0, opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-                  className="absolute top-12 left-1/2 -translate-x-1/2 text-center"
+                  className="absolute top-6 sm:top-12 left-1/2 -translate-x-1/2 text-center w-[90%] sm:w-auto"
                 >
-                  <div className="bg-white text-tokmanni-red font-black text-3xl sm:text-5xl px-8 py-4 rounded-2xl shadow-2xl rotate-[-2deg] tracking-tight">
+                  <div className="bg-white text-tokmanni-red font-black text-2xl sm:text-3xl md:text-5xl px-5 sm:px-8 py-3 sm:py-4 rounded-2xl shadow-2xl rotate-[-2deg] tracking-tight">
                     Ämpäri kasattu! 🎉
                   </div>
-                  <p className="text-white font-bold mt-4 text-lg">
+                  <p className="text-white font-bold mt-3 sm:mt-4 text-base sm:text-lg">
                     Halvalla hyvää kesää! ☀️
                   </p>
                 </motion.div>
@@ -214,7 +214,7 @@ export default function BucketAnimation({ open, selectedIds, onClose, onCheckout
                   onClose();
                   onCheckout?.();
                 }}
-                className="absolute bottom-10 bg-white text-tokmanni-red font-black px-8 py-4 rounded-full uppercase tracking-wider shadow-xl hover:scale-105 active:scale-95 transition-transform"
+                className="absolute bottom-6 sm:bottom-10 bg-white text-tokmanni-red font-black px-6 sm:px-8 py-3.5 sm:py-4 rounded-full uppercase tracking-wider shadow-xl hover:scale-105 active:scale-95 transition-transform text-sm sm:text-base"
               >
                 Jatka tilaukseen →
               </motion.button>

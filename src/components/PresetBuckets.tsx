@@ -15,21 +15,21 @@ const THEME_EMOJIS: Record<string, string> = {
 
 export default function PresetBuckets({ onSelect }: Props) {
   return (
-    <section id="valmiit" className="bg-neutral-50 py-16 sm:py-20">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-10">
-          <span className="inline-block bg-white border-2 border-tokmanni-red text-tokmanni-red font-black uppercase tracking-widest text-xs px-4 py-1.5 rounded-full mb-3">
+    <section id="valmiit" className="bg-neutral-50 py-12 sm:py-16 md:py-20">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6">
+        <div className="mb-6 sm:mb-10">
+          <span className="inline-block bg-white border-2 border-tokmanni-red text-tokmanni-red font-black uppercase tracking-widest text-[10px] sm:text-xs px-3 sm:px-4 py-1 sm:py-1.5 rounded-full mb-3">
             Valmiit ämpärit
           </span>
-          <h2 className="text-4xl sm:text-5xl font-black leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight">
             Valitse valmis <span className="text-tokmanni-red">teemaämpäri</span>
           </h2>
-          <p className="mt-2 text-neutral-500 text-lg max-w-xl">
+          <p className="mt-2 text-neutral-500 text-base sm:text-lg max-w-xl">
             Asiantuntijat ovat koonneet parhaat yhdistelmät — yksi klikkaus ja olet valmis.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {presetBuckets.map((bucket, i) => {
             const bucketProducts = products.filter((p) =>
               bucket.tuoteIdt.includes(p.id),

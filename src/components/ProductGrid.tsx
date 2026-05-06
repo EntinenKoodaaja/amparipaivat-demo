@@ -8,16 +8,16 @@ interface Props {
 
 export default function ProductGrid({ selected, onToggle, isFull = false }: Props) {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       {kategoriat.map((kat) => {
         const items = products.filter((p) => p.kategoria === kat.id);
         return (
           <div key={kat.id}>
-            <h3 className="flex items-center gap-2 text-sm font-black uppercase tracking-widest text-tokmanni-red mb-3">
+            <h3 className="flex items-center gap-2 text-xs sm:text-sm font-black uppercase tracking-widest text-tokmanni-red mb-2 sm:mb-3 sticky top-[57px] sm:top-[68px] bg-white/95 backdrop-blur-sm py-2 z-10 -mx-1 px-1">
               <span>{kat.ikoni}</span>
               <span>{kat.nimi}</span>
             </h3>
-            <div className="grid grid-cols-1 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2">
               {items.map((p) => {
                 const isSelected = selected.has(p.id);
                 const isDisabled = isFull && !isSelected;

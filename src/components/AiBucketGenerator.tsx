@@ -64,7 +64,7 @@ export default function AiBucketGenerator({ onResult }: Props) {
   return (
     <section
       id="ai"
-      className="relative bg-tokmanni-red text-white overflow-hidden py-16 sm:py-20"
+      className="relative bg-tokmanni-red text-white overflow-hidden py-12 sm:py-16 md:py-20"
     >
       {/* dekoratiiviset taustaelementit */}
       <div className="absolute inset-0 opacity-15 pointer-events-none">
@@ -72,25 +72,25 @@ export default function AiBucketGenerator({ onResult }: Props) {
         <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-white blur-3xl" />
       </div>
 
-      <div className="relative max-w-3xl mx-auto px-6">
-        <div className="text-center mb-8">
-          <span className="inline-block bg-yellow-300 text-tokmanni-red font-black uppercase tracking-widest text-xs px-4 py-1.5 rounded-full mb-4 shadow-md">
+      <div className="relative max-w-3xl mx-auto px-5 sm:px-6">
+        <div className="text-center mb-6 sm:mb-8">
+          <span className="inline-block bg-yellow-300 text-tokmanni-red font-black uppercase tracking-widest text-[10px] sm:text-xs px-3 sm:px-4 py-1 sm:py-1.5 rounded-full mb-3 sm:mb-4 shadow-md">
             ✨ AI-generaattori
           </span>
-          <h2 className="text-4xl sm:text-5xl font-black leading-tight mb-3">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-3">
             Anna AI:n koota <br className="sm:hidden" />
             <span className="bg-white text-tokmanni-red px-3 py-0.5 rounded-xl inline-block rotate-[-1deg]">
               täydellinen ämpärisi
             </span>
           </h2>
-          <p className="text-white/90 text-lg max-w-xl mx-auto">
+          <p className="text-white/90 text-base sm:text-lg max-w-xl mx-auto">
             Kuvaile millaisen ämpärin haluat — AI valitsee parhaat tuotteet puolestasi.
           </p>
         </div>
 
         <form
           onSubmit={handleSubmit}
-          className="bg-white text-neutral-900 rounded-2xl p-6 shadow-2xl"
+          className="bg-white text-neutral-900 rounded-2xl p-4 sm:p-6 shadow-2xl"
         >
           <label htmlFor="ai-prompt" className="block text-sm font-black uppercase tracking-widest text-tokmanni-red mb-2">
             Kuvaile ämpärisi
@@ -103,6 +103,7 @@ export default function AiBucketGenerator({ onResult }: Props) {
             rows={4}
             disabled={loading}
             className="w-full bg-neutral-50 border-2 border-neutral-200 focus:border-tokmanni-red focus:bg-white rounded-xl px-4 py-3 text-base outline-none transition-colors resize-none disabled:opacity-60"
+            style={{ fontSize: '16px' }}
           />
 
           <div className="flex flex-wrap gap-2 mt-3">

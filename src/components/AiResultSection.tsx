@@ -17,15 +17,15 @@ export default function AiResultSection({ selectedIds, onEdit, onCheckout }: Pro
   const orbitProducts = selectedProducts.slice(0, 6);
 
   return (
-    <section id="ai-result" className="bg-white py-16 sm:py-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="ai-result" className="bg-white py-12 sm:py-16 md:py-24">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6">
 
         {/* Otsikko */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-10 sm:mb-14">
           <motion.span
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-block bg-yellow-300 text-tokmanni-red font-black uppercase tracking-widest text-xs px-4 py-1.5 rounded-full mb-4 shadow-md"
+            className="inline-block bg-yellow-300 text-tokmanni-red font-black uppercase tracking-widest text-[10px] sm:text-xs px-3 sm:px-4 py-1 sm:py-1.5 rounded-full mb-3 sm:mb-4 shadow-md"
           >
             ✨ AI kokosi ämpärisi
           </motion.span>
@@ -33,7 +33,7 @@ export default function AiResultSection({ selectedIds, onEdit, onCheckout }: Pro
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl font-black leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight"
           >
             Valmis ämpärisi{' '}
             <span className="text-tokmanni-red">on täällä!</span>
@@ -41,22 +41,21 @@ export default function AiResultSection({ selectedIds, onEdit, onCheckout }: Pro
         </div>
 
         {/* Ämpäri + tuotteet orbitissa */}
-        <div className="flex flex-col items-center mb-14">
-          <div className="relative flex items-center justify-center w-64 h-64 mb-6">
+        <div className="flex flex-col items-center mb-10 sm:mb-14">
+          <div className="relative flex items-center justify-center w-56 h-56 sm:w-64 sm:h-64 mb-6">
             {orbitProducts.map((p, i) => {
               const angle = (i / orbitProducts.length) * 360 - 90;
               const rad = (angle * Math.PI) / 180;
-              const r = 100;
               return (
                 <motion.div
                   key={p.id}
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.2 + i * 0.08, type: 'spring', stiffness: 200 }}
-                  className="absolute text-3xl select-none"
+                  className="absolute text-2xl sm:text-3xl select-none"
                   style={{
-                    left: `calc(50% + ${Math.cos(rad) * r}px - 20px)`,
-                    top: `calc(50% + ${Math.sin(rad) * r}px - 20px)`,
+                    left: `calc(50% + (${Math.cos(rad).toFixed(4)} * min(40vw, 100px)) - 18px)`,
+                    top: `calc(50% + (${Math.sin(rad).toFixed(4)} * min(40vw, 100px)) - 18px)`,
                   }}
                 >
                   {p.ikoni}
@@ -68,7 +67,7 @@ export default function AiResultSection({ selectedIds, onEdit, onCheckout }: Pro
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.15, type: 'spring', stiffness: 160 }}
             >
-              <TokmanniBucket className="h-36 w-auto drop-shadow-2xl" />
+              <TokmanniBucket className="h-28 sm:h-36 w-auto drop-shadow-2xl" />
             </motion.div>
           </div>
 
@@ -88,11 +87,11 @@ export default function AiResultSection({ selectedIds, onEdit, onCheckout }: Pro
         </div>
 
         {/* Tuotekortit */}
-        <div className="mb-12">
-          <h3 className="text-2xl font-black mb-6 text-neutral-900">
+        <div className="mb-10 sm:mb-12">
+          <h3 className="text-xl sm:text-2xl font-black mb-4 sm:mb-6 text-neutral-900">
             AI valitsi nämä tuotteet ämpäriisi
           </h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
             {selectedProducts.map((p, i) => (
               <motion.div
                 key={p.id}
@@ -140,13 +139,13 @@ export default function AiResultSection({ selectedIds, onEdit, onCheckout }: Pro
         >
           <button
             onClick={onEdit}
-            className="inline-flex justify-center items-center border-2 border-tokmanni-red text-tokmanni-red font-black px-8 py-4 rounded-full uppercase tracking-wider hover:bg-red-50 transition-colors"
+            className="inline-flex justify-center items-center border-2 border-tokmanni-red text-tokmanni-red font-black px-6 sm:px-8 py-3.5 sm:py-4 rounded-full uppercase tracking-wider hover:bg-red-50 transition-colors text-sm sm:text-base"
           >
             Muokkaa ämpäriä
           </button>
           <button
             onClick={onCheckout}
-            className="inline-flex justify-center items-center bg-tokmanni-red text-white font-black px-8 py-4 rounded-full uppercase tracking-wider shadow-lg hover:bg-tokmanni-red-dark hover:scale-105 active:scale-95 transition-all"
+            className="inline-flex justify-center items-center bg-tokmanni-red text-white font-black px-6 sm:px-8 py-3.5 sm:py-4 rounded-full uppercase tracking-wider shadow-lg hover:bg-tokmanni-red-dark hover:scale-105 active:scale-95 transition-all text-sm sm:text-base"
           >
             Siirry kassalle →
           </button>

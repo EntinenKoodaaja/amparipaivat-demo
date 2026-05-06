@@ -9,39 +9,39 @@ export default function Hero() {
         <div className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-orange-200 blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto w-full px-6 grid md:grid-cols-[1fr_1.25fr] gap-4 items-center min-h-screen py-28">
+      <div className="relative max-w-7xl mx-auto w-full px-5 sm:px-6 grid md:grid-cols-[1fr_1.25fr] gap-2 md:gap-4 items-center min-h-screen py-12 sm:py-20 md:py-28">
         {/* Left: text content */}
-        <div>
-          <span className="inline-block bg-yellow-300 text-tokmanni-red font-black uppercase tracking-widest text-xs px-4 py-1.5 rounded-full mb-6 shadow-md">
+        <div className="text-center md:text-left">
+          <span className="inline-block bg-yellow-300 text-tokmanni-red font-black uppercase tracking-widest text-[10px] sm:text-xs px-3 sm:px-4 py-1 sm:py-1.5 rounded-full mb-4 sm:mb-6 shadow-md">
             ☀️ Kesä 2026
           </span>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black leading-[0.95] mb-6 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[0.95] mb-4 sm:mb-6 tracking-tight">
             Rakenna
             <br />
             unelmiesi
             <br />
-            <span className="inline-flex items-center gap-2 bg-white text-tokmanni-red px-4 py-1 rounded-2xl rotate-[-2deg] mt-2">
-              ämpäri <TokmanniBucket className="h-10 w-auto" />
+            <span className="inline-flex items-center gap-2 bg-white text-tokmanni-red px-3 sm:px-4 py-1 rounded-2xl rotate-[-2deg] mt-2">
+              ämpäri <TokmanniBucket className="h-8 sm:h-10 w-auto" />
             </span>
           </h1>
 
-          <p className="text-lg sm:text-xl font-medium opacity-95 mb-8 max-w-md">
+          <p className="text-base sm:text-lg md:text-xl font-medium opacity-95 mb-6 sm:mb-8 max-w-md mx-auto md:mx-0">
             Valitse valmis teemaämpäri tai täytä omasi
             Tokmannin parhailla kesätuotteilla. Halvalla,
             hauskasti ja helposti!
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto md:max-w-none md:mx-0">
             <a
               href="#rakenna"
-              className="inline-flex justify-center items-center bg-white text-tokmanni-red font-black px-7 py-4 rounded-full uppercase tracking-wider shadow-lg hover:scale-105 active:scale-95 transition-transform"
+              className="inline-flex justify-center items-center bg-white text-tokmanni-red font-black px-6 sm:px-7 py-3.5 sm:py-4 rounded-full uppercase tracking-wider shadow-lg hover:scale-105 active:scale-95 transition-transform text-sm sm:text-base"
             >
               Rakenna oma →
             </a>
             <a
               href="#valmiit"
-              className="inline-flex justify-center items-center bg-transparent border-2 border-white text-white font-black px-7 py-4 rounded-full uppercase tracking-wider hover:bg-white hover:text-tokmanni-red transition-colors"
+              className="inline-flex justify-center items-center bg-transparent border-2 border-white text-white font-black px-6 sm:px-7 py-3.5 sm:py-4 rounded-full uppercase tracking-wider hover:bg-white hover:text-tokmanni-red transition-colors text-sm sm:text-base"
             >
               Katso valmiit
             </a>
@@ -52,8 +52,8 @@ export default function Hero() {
         <div className="relative flex items-end justify-center md:justify-end">
           <div className="relative">
             {/* Starburst sale badge */}
-            <div className="absolute -top-6 left-4 z-10 -rotate-[12deg]">
-              <svg viewBox="0 0 100 100" className="w-28 h-28 sm:w-32 sm:h-32 drop-shadow-xl">
+            <div className="absolute -top-3 sm:-top-6 left-2 sm:left-4 z-10 -rotate-[12deg]">
+              <svg viewBox="0 0 100 100" className="w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 drop-shadow-xl">
                 <defs>
                   <radialGradient id="badge-grad" cx="40%" cy="35%" r="60%">
                     <stop offset="0%" stopColor="#FFE535" />
@@ -83,7 +83,7 @@ export default function Hero() {
               <img
                 src="/tokmanni-bucket-photo.png"
                 alt="Tokmanni ämpäri"
-                className="h-[55vh] sm:h-[68vh] lg:h-[80vh] w-auto block"
+                className="h-[38vh] sm:h-[55vh] md:h-[60vh] lg:h-[80vh] w-auto block"
                 style={{ maxHeight: '680px' }}
               />
               {/* Häivytä valkoiset reunat heroväriin */}
