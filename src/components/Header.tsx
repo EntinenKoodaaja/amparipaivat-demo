@@ -31,7 +31,7 @@ export default function Header() {
           </a>
           <a
             href="#top"
-            className="bg-tokmanni-red text-white font-black px-4 sm:px-5 py-2 rounded-full uppercase text-sm tracking-wider hover:bg-tokmanni-red-dark transition-colors shadow-md"
+            className="hidden sm:inline-flex bg-tokmanni-red text-white font-black px-5 py-2 rounded-full uppercase text-sm tracking-wider hover:bg-tokmanni-red-dark transition-colors shadow-md"
           >
             <span className="inline-flex items-center gap-2">
               Aloita <TokmanniBucket className="h-5 w-auto" />
