@@ -1,5 +1,4 @@
 import TokmanniLogo from './TokmanniLogo';
-import TokmanniBucket from './TokmanniBucket';
 
 export default function Header() {
   return (
@@ -28,14 +27,6 @@ export default function Header() {
             className="hidden sm:inline text-neutral-700 font-bold hover:text-tokmanni-red transition-colors whitespace-nowrap"
           >
             Rakenna oma
-          </a>
-          <a
-            href="#top"
-            className="hidden sm:inline-flex bg-tokmanni-red text-white font-black px-5 py-2 rounded-full uppercase text-sm tracking-wider hover:bg-tokmanni-red-dark transition-colors shadow-md"
-          >
-            <span className="inline-flex items-center gap-2">
-              Aloita <TokmanniBucket className="h-5 w-auto" />
-            </span>
           </a>
         </nav>
 

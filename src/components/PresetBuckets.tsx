@@ -30,7 +30,7 @@ export default function PresetBuckets({ onSelect }: Props) {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {presetBuckets.map((bucket, i) => {
+          {presetBuckets.map((bucket) => {
             const bucketProducts = products.filter((p) =>
               bucket.tuoteIdt.includes(p.id),
             );
@@ -39,10 +39,6 @@ export default function PresetBuckets({ onSelect }: Props) {
             return (
               <motion.div
                 key={bucket.id}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
                 whileHover={{ y: -6, scale: 1.02 }}
                 className="bg-white rounded-2xl overflow-hidden shadow-md border-2 flex flex-col cursor-default"
                 style={{ borderColor: bucket.teemaväri }}

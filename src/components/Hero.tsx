@@ -10,13 +10,13 @@ export default function Hero() {
       </div>
 
       {/* Scrolling marquee text — taustakerros */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none select-none" aria-hidden="true">
         <div className="absolute top-[18%] left-0 right-0 overflow-hidden -rotate-3">
           <div
             className="flex whitespace-nowrap opacity-[0.10]"
             style={{ animation: 'marquee 35s linear infinite' }}
           >
-            {Array.from({ length: 24 }).map((_, i) => (
+            {Array.from({ length: 12 }).map((_, i) => (
               <span
                 key={i}
                 className="text-6xl sm:text-7xl md:text-8xl font-black uppercase tracking-tight text-white px-6"
@@ -31,7 +31,7 @@ export default function Hero() {
             className="flex whitespace-nowrap opacity-[0.08]"
             style={{ animation: 'marquee-reverse 45s linear infinite' }}
           >
-            {Array.from({ length: 24 }).map((_, i) => (
+            {Array.from({ length: 12 }).map((_, i) => (
               <span
                 key={i}
                 className="text-6xl sm:text-7xl md:text-8xl font-black uppercase tracking-tight text-yellow-200 px-6"

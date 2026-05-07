@@ -165,6 +165,12 @@ export default function AiBucketGenerator({ onResult }: Props) {
               <>Luo ämpäri ✨</>
             )}
           </button>
+
+          {!prompt.trim() && !loading && (
+            <p className="mt-3 text-center text-sm text-neutral-500">
+              Kirjoita kuvaus tai valitse vinkki yllä ↑
+            </p>
+          )}
         </form>
       </div>
 
