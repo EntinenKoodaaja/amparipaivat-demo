@@ -8,7 +8,7 @@ interface Props {
 }
 
 const LOADING_MESSAGES = [
-  'AI kokoaa ämpäriäsi...',
+  'ÄmpäriApuri kokoaa ämpäriäsi...',
   'Etsitään parhaita tuotteita...',
   'Tarkistetaan budjettia...',
   'Viimeistellään ämpäriä...',
@@ -75,16 +75,16 @@ export default function AiBucketGenerator({ onResult }: Props) {
       <div className="relative max-w-3xl mx-auto px-5 sm:px-6">
         <div className="text-center mb-6 sm:mb-8">
           <span className="inline-block bg-yellow-300 text-tokmanni-red font-black uppercase tracking-widest text-[10px] sm:text-xs px-3 sm:px-4 py-1 sm:py-1.5 rounded-full mb-3 sm:mb-4 shadow-md">
-            ✨ AI-generaattori
+            ✨ ÄmpäriApuri
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-3">
-            Anna AI:n koota <br className="sm:hidden" />
+            Anna ÄmpäriApurin koota <br className="sm:hidden" />
             <span className="bg-white text-tokmanni-red px-3 py-0.5 rounded-xl inline-block rotate-[-1deg]">
               täydellinen ämpärisi
             </span>
           </h2>
           <p className="text-white/90 text-base sm:text-lg max-w-xl mx-auto">
-            Kuvaile millaisen ämpärin haluat — AI valitsee parhaat tuotteet puolestasi.
+            Kuvaile millaisen ämpärin haluat — ÄmpäriApuri valitsee parhaat tuotteet puolestasi.
           </p>
         </div>
 

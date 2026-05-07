@@ -27,7 +27,7 @@ export default function AiResultSection({ selectedIds, onEdit, onCheckout }: Pro
             animate={{ opacity: 1, y: 0 }}
             className="inline-block bg-yellow-300 text-tokmanni-red font-black uppercase tracking-widest text-[10px] sm:text-xs px-3 sm:px-4 py-1 sm:py-1.5 rounded-full mb-3 sm:mb-4 shadow-md"
           >
-            ✨ AI kokosi ämpärisi
+            ✨ ÄmpäriApuri kokosi ämpärisi
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 12 }}
@@ -89,7 +89,7 @@ export default function AiResultSection({ selectedIds, onEdit, onCheckout }: Pro
         {/* Tuotekortit */}
         <div className="mb-10 sm:mb-12">
           <h3 className="text-xl sm:text-2xl font-black mb-4 sm:mb-6 text-neutral-900">
-            AI valitsi nämä tuotteet ämpäriisi
+            ÄmpäriApuri valitsi nämä tuotteet ämpäriisi
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
             {selectedProducts.map((p, i) => (
