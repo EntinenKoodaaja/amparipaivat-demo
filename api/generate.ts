@@ -39,12 +39,12 @@ export default async function handler(req: Request): Promise<Response> {
     return jsonResponse({ error: 'userMessage puuttuu.' }, 400);
   }
 
+  // Tiivistetty tuoteconteksti — kuvaus pois, säästää tokeneita ja generointiaikaa
   const productContext = products.map((p) => ({
     id: p.id,
     nimi: p.nimi,
     hinta: p.hinta,
     kategoria: p.kategoria,
-    kuvaus: p.kuvaus,
   }));
 
   const userPrompt = `Tuotteet (JSON):\n${JSON.stringify(productContext)}\n\nKäyttäjän toive:\n${userMessage}`;
@@ -57,6 +57,7 @@ export default async function handler(req: Request): Promise<Response> {
     },
     body: JSON.stringify({
       model: MODEL,
+      stream: true,
       messages: [
         { role: 'system', content: SYSTEM_PROMPT },
         { role: 'user', content: userPrompt },
@@ -64,22 +65,21 @@ export default async function handler(req: Request): Promise<Response> {
     }),
   });
 
-  if (!upstream.ok) {
-    const detail = (await upstream.text()).slice(0, 300);
+  if (!upstream.ok || !upstream.body) {
+    const detail = upstream.body ? (await upstream.text()).slice(0, 300) : '';
     return jsonResponse(
       { error: `OpenCode ${upstream.status}: ${detail}` },
       upstream.status,
     );
   }
 
-  const data = (await upstream.json()) as {
-    choices?: Array<{ message?: { content?: string } }>;
-  };
-  const text = data?.choices?.[0]?.message?.content;
-
-  if (!text) {
-    return jsonResponse({ error: 'OpenCode palautti tyhjän vastauksen.' }, 502);
-  }
-
-  return jsonResponse({ text });
+  // Putkita upstream-SSE-vastaus suoraan asiakkaalle — selain kerää delta-sisällön
+  return new Response(upstream.body, {
+    status: 200,
+    headers: {
+      'Content-Type': 'text/event-stream; charset=utf-8',
+      'Cache-Control': 'no-cache, no-transform',
+      Connection: 'keep-alive',
+    },
+  });
 }

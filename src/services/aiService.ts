@@ -70,6 +70,42 @@ const extractIds = (raw: string): string[] => {
   return filtered;
 };
 
+async function readSseContent(body: ReadableStream<Uint8Array>): Promise<string> {
+  const reader = body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+  let full = '';
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+
+    // SSE-tapahtumat erottuvat tyhjällä rivillä
+    const events = buffer.split('\n\n');
+    buffer = events.pop() ?? '';
+
+    for (const event of events) {
+      for (const line of event.split('\n')) {
+        if (!line.startsWith('data:')) continue;
+        const data = line.slice(5).trim();
+        if (!data || data === '[DONE]') continue;
+        try {
+          const parsed = JSON.parse(data) as {
+            choices?: Array<{ delta?: { content?: string } }>;
+          };
+          const delta = parsed?.choices?.[0]?.delta?.content;
+          if (typeof delta === 'string') full += delta;
+        } catch {
+          // ohita rikkinäiset palaset
+        }
+      }
+    }
+  }
+
+  return full;
+}
+
 export async function generateBucketFromPrompt(
   userMessage: string,
 ): Promise<string[]> {
@@ -92,10 +128,13 @@ export async function generateBucketFromPrompt(
     );
   }
 
-  const data = (await response.json()) as { text?: string };
-  const text = data?.text;
+  if (!response.body) {
+    throw new AiServiceError('ÄmpäriApuri ei palauttanut vastausta.');
+  }
 
-  if (!text) {
+  const text = await readSseContent(response.body);
+
+  if (!text.trim()) {
     throw new AiServiceError('ÄmpäriApuri ei palauttanut vastausta.');
   }
 
