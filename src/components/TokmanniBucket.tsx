@@ -9,6 +9,22 @@ export default function TokmanniBucket({ className = '', style }: Props) {
   const raw = useId();
   const u = raw.replace(/[^a-zA-Z0-9]/g, '');
 
+  const RED = '#E3000F';
+  const RED_DARK = '#B8000C';
+  const RED_DARKER = '#820008';
+
+  // TOKMANNI-tekstin asettelu (target-O TokmanniLogon tyyliin)
+  const fs = 20;
+  const tWidth = fs * 0.62;
+  const oR = fs * 0.36;
+  const kWidth = fs * 3.05;
+  const gap = fs * 0.08;
+  const totalW = tWidth + gap + 2 * oR + gap + kWidth;
+  const startX = 100 - totalW / 2;
+  const baseY = 158;
+  const oCx = startX + tWidth + gap + oR;
+  const oCy = baseY - fs * 0.34;
+
   return (
     <svg
       viewBox="0 0 200 245"
@@ -18,147 +34,93 @@ export default function TokmanniBucket({ className = '', style }: Props) {
       aria-label="Tokmanni-ämpäri"
     >
       <defs>
-        {/* Main body: dark left edge → bright left-center highlight zone → medium right → dark right edge */}
-        <linearGradient id={`${u}b`} x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#880007" />
-          <stop offset="12%" stopColor="#B8000C" />
-          <stop offset="30%" stopColor="#E3000F" />
-          <stop offset="52%" stopColor="#E3000F" />
-          <stop offset="72%" stopColor="#C8000C" />
-          <stop offset="100%" stopColor="#820008" />
+        {/* Hienovarainen kylkivarjostus — kiinteä, ei läpikuultava */}
+        <linearGradient id={`${u}body`} x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor={RED_DARK} />
+          <stop offset="25%" stopColor={RED} />
+          <stop offset="75%" stopColor={RED} />
+          <stop offset="100%" stopColor={RED_DARK} />
         </linearGradient>
-
-        {/* Top rim: brighter, lighter */}
-        <linearGradient id={`${u}rt`} x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#A00009" />
-          <stop offset="30%" stopColor="#FF3040" />
-          <stop offset="55%" stopColor="#E81525" />
-          <stop offset="100%" stopColor="#990009" />
-        </linearGradient>
-
-        {/* Rim inner shadow */}
-        <linearGradient id={`${u}ri`} x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#700006" />
-          <stop offset="50%" stopColor="#990009" />
-          <stop offset="100%" stopColor="#500004" />
-        </linearGradient>
-
-        {/* Bottom */}
-        <linearGradient id={`${u}bt`} x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#5A0005" />
-          <stop offset="50%" stopColor="#780007" />
-          <stop offset="100%" stopColor="#3A0003" />
-        </linearGradient>
-
-        {/* Handle: metallic silver */}
-        <linearGradient id={`${u}hd`} x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#E0E0E0" />
-          <stop offset="40%" stopColor="#C0C0C0" />
-          <stop offset="100%" stopColor="#707070" />
-        </linearGradient>
-
-        {/* Ring */}
-        <radialGradient id={`${u}rg`} cx="35%" cy="30%" r="65%">
-          <stop offset="0%" stopColor="#E8E8E8" />
-          <stop offset="100%" stopColor="#707070" />
-        </radialGradient>
-
-        {/* Specular highlight: soft radial glow for the big bright spot */}
-        <radialGradient id={`${u}sp`} cx="40%" cy="28%" r="55%">
-          <stop offset="0%" stopColor="white" stopOpacity="0.38" />
-          <stop offset="60%" stopColor="white" stopOpacity="0.10" />
-          <stop offset="100%" stopColor="white" stopOpacity="0" />
-        </radialGradient>
 
         <filter id={`${u}sh`} x="-20%" y="-10%" width="140%" height="130%">
-          <feDropShadow dx="3" dy="8" stdDeviation="10" floodColor="#000" floodOpacity="0.35" />
+          <feDropShadow dx="2" dy="6" stdDeviation="6" floodColor="#000" floodOpacity="0.22" />
         </filter>
       </defs>
 
-      {/* Handle — behind body */}
+      {/* Punainen rautalanka-kahva — rungon takana */}
       <path
-        d="M 66,78 C 66,12 134,12 134,78"
+        d="M 60,76 C 60,18 140,18 140,76"
         fill="none"
-        stroke={`url(#${u}hd)`}
-        strokeWidth="10"
+        stroke={RED_DARK}
+        strokeWidth="5"
         strokeLinecap="round"
-      />
-      {/* Handle edge highlight */}
-      <path
-        d="M 66,78 C 66,12 134,12 134,78"
-        fill="none"
-        stroke="white"
-        strokeWidth="3"
-        strokeLinecap="round"
-        opacity="0.4"
       />
 
-      {/* Body + rim + bottom with drop shadow */}
+      {/* Runko + vanne + pohja varjostuksella */}
       <g filter={`url(#${u}sh)`}>
-        {/* Body */}
-        <path d="M 36,76 L 164,76 L 148,212 L 52,212 Z" fill={`url(#${u}b)`} />
-
-        {/* Big specular highlight — the main 3D-realism element */}
-        <path d="M 36,76 L 164,76 L 148,212 L 52,212 Z" fill={`url(#${u}sp)`} />
-
-        {/* Crisp left-side gloss strip */}
+        {/* Kapeneva runko, pyöristetty pohja */}
         <path
-          d="M 48,88 C 57,85 68,85 72,91 L 64,200 C 55,198 46,193 41,183 Z"
-          fill="white"
-          opacity="0.16"
+          d="M 32,82 L 168,82 L 152,222 Q 100,232 48,222 Z"
+          fill={`url(#${u}body)`}
         />
 
-        {/* Thin bright edge highlight on left rim of body */}
+        {/* Vasemman reunan pehmeä korostus */}
         <path
-          d="M 36,76 L 50,76 L 55,100 L 40,98 Z"
+          d="M 48,92 Q 56,90 62,92 L 58,212 Q 52,212 46,210 Z"
           fill="white"
-          opacity="0.10"
+          opacity="0.09"
         />
 
-        {/* Top rim */}
-        <ellipse cx="100" cy="74" rx="64" ry="13" fill={`url(#${u}rt)`} />
-        {/* Rim top highlight */}
-        <ellipse cx="90" cy="70" rx="40" ry="5" fill="white" opacity="0.18" />
-        {/* Rim inner shadow */}
-        <ellipse cx="100" cy="78" rx="57" ry="9" fill={`url(#${u}ri)`} opacity="0.7" />
-
-        {/* Bottom */}
-        <ellipse cx="100" cy="212" rx="48" ry="9" fill={`url(#${u}bt)`} />
-        {/* Bottom edge darkening */}
-        <ellipse cx="100" cy="214" rx="44" ry="5" fill="#200001" opacity="0.3" />
+        {/* Vanne — kerrokset (ulkoreuna tumma, vanne kirkas, sisäpuoli tumma) */}
+        <ellipse cx="100" cy="82" rx="68" ry="13" fill={RED_DARK} />
+        <ellipse cx="100" cy="80" rx="68" ry="10" fill={RED} />
+        <ellipse cx="100" cy="82" rx="58" ry="8" fill={RED_DARKER} />
+        <ellipse cx="100" cy="81" rx="58" ry="5" fill="#5A0004" opacity="0.7" />
       </g>
 
-      {/* Handle rings — on top of body */}
-      <circle cx="66" cy="76" r="8" fill={`url(#${u}rg)`} />
-      <circle cx="66" cy="76" r="4" fill="#D8D8D8" />
-      <circle cx="134" cy="76" r="8" fill={`url(#${u}rg)`} />
-      <circle cx="134" cy="76" r="4" fill="#D8D8D8" />
+      {/* Kahvan kiinnitysrenkaat */}
+      <circle cx="60" cy="80" r="3.2" fill={RED_DARKER} />
+      <circle cx="140" cy="80" r="3.2" fill={RED_DARKER} />
 
-      {/* TOKMANNI */}
+      {/* TOKMANNI — T + target-O + KMANNI */}
+      {/* T */}
       <text
-        x="100"
-        y="144"
-        textAnchor="middle"
-        dominantBaseline="middle"
-        fill="white"
-        fontFamily="'Arial Black','Helvetica Neue',sans-serif"
-        fontSize="22"
+        x={startX}
+        y={baseY}
+        fontFamily="'Arial Black','Impact','Helvetica Neue',sans-serif"
+        fontSize={fs}
         fontWeight="900"
+        fill="white"
         letterSpacing="-0.5"
       >
-        TOKMANNI
+        T
+      </text>
+      {/* Target O */}
+      <circle cx={oCx} cy={oCy} r={oR} fill="none" stroke="white" strokeWidth={fs * 0.14} />
+      <circle cx={oCx} cy={oCy} r={oR * 0.28} fill="white" />
+      {/* KMANNI */}
+      <text
+        x={oCx + oR + gap}
+        y={baseY}
+        fontFamily="'Arial Black','Impact','Helvetica Neue',sans-serif"
+        fontSize={fs}
+        fontWeight="900"
+        fill="white"
+        letterSpacing="-0.5"
+      >
+        KMANNI
       </text>
 
       {/* Slogan */}
       <text
         x="100"
-        y="170"
+        y="178"
         textAnchor="middle"
         dominantBaseline="middle"
-        fill="rgba(255,255,255,0.72)"
+        fill="white"
         fontFamily="Arial,sans-serif"
-        fontSize="7.5"
-        letterSpacing="0.3"
+        fontSize="7"
+        letterSpacing="0.2"
       >
         Fiksun ostamisen puolesta
       </text>
