@@ -19,9 +19,9 @@ export const presetBuckets: PresetBucket[] = [
     id: 'sauna',
     nimi: 'Saunaämpäri',
     kuvaus:
-      'Täydellinen saunailta-setti: peseytyminen, rauhoittuminen ja herkuttelu.',
+      'Täydellinen saunailtasetti: peseytyminen, rauhoittuminen ja herkuttelu.',
     teemaväri: '#C0392B',
-    tuoteIdt: ['h2', 'h4', 'h5', 'h7', 'r5', 'r6', 'v5'],
+    tuoteIdt: ['h4', 'h7', 'h9', 'h10', 'r6', 'r8', 'v8'],
   },
   {
     id: 'retki',

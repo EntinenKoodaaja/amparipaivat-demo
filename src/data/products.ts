@@ -37,7 +37,7 @@ export const products: Product[] = [
   },
   {
     id: 'u4',
-    nimi: 'Hyönteiskarkote spray',
+    nimi: 'Hyönteiskarkotesuihke',
     hinta: 5.49,
     kategoria: 'ulkoilu',
     ikoni: '🦟',
@@ -95,7 +95,7 @@ export const products: Product[] = [
   },
   {
     id: 'h3',
-    nimi: 'Deodorantti stick',
+    nimi: 'Deodoranttipuikko',
     hinta: 2.99,
     kategoria: 'hygienia',
     ikoni: '✨',
@@ -111,7 +111,7 @@ export const products: Product[] = [
   },
   {
     id: 'h5',
-    nimi: 'Hammasharja + tahna -setti',
+    nimi: 'Hammasharja- ja tahnasetti',
     hinta: 3.49,
     kategoria: 'hygienia',
     ikoni: '🦷',
@@ -119,7 +119,7 @@ export const products: Product[] = [
   },
   {
     id: 'h6',
-    nimi: 'Kuulosuojaimet vaahto',
+    nimi: 'Vaahtokuulosuojaimet',
     hinta: 1.49,
     kategoria: 'hygienia',
     ikoni: '🎧',
@@ -135,11 +135,27 @@ export const products: Product[] = [
   },
   {
     id: 'h8',
-    nimi: 'Laastari-lajitelma 20 kpl',
+    nimi: 'Laastarilajitelma 20 kpl',
     hinta: 1.99,
     kategoria: 'hygienia',
     ikoni: '🩹',
     kuvaus: 'Eri kokoisia laastareita ensiaputarpeisiin.',
+  },
+  {
+    id: 'h9',
+    nimi: 'Saunatuoksu eukalyptus',
+    hinta: 3.99,
+    kategoria: 'hygienia',
+    ikoni: '🌿',
+    kuvaus: 'Raikas eukalyptustuoksu kiukaalle, 250 ml.',
+  },
+  {
+    id: 'h10',
+    nimi: 'Kasvonaamio',
+    hinta: 1.99,
+    kategoria: 'hygienia',
+    ikoni: '💆',
+    kuvaus: 'Kosteuttava kangasnaamio saunan jälkeen.',
   },
 
   // --- RUOKA ---
@@ -169,7 +185,7 @@ export const products: Product[] = [
   },
   {
     id: 'r4',
-    nimi: 'Nuotiopannu makkara',
+    nimi: 'Nuotiomakkara',
     hinta: 3.99,
     kategoria: 'ruoka',
     ikoni: '🌭',
@@ -177,7 +193,7 @@ export const products: Product[] = [
   },
   {
     id: 'r5',
-    nimi: 'Kahvipakkaus pikakahvi',
+    nimi: 'Pikakahvipakkaus',
     hinta: 2.99,
     kategoria: 'ruoka',
     ikoni: '☕',
@@ -193,17 +209,25 @@ export const products: Product[] = [
   },
   {
     id: 'r7',
-    nimi: 'Karkkipussi sekoitus',
+    nimi: 'Sekakarkkipussi',
     hinta: 1.79,
     kategoria: 'ruoka',
     ikoni: '🍬',
     kuvaus: 'Valikoimakarkit festarimatkalle.',
   },
+  {
+    id: 'r8',
+    nimi: 'Limonadi 0,5 l',
+    hinta: 1.29,
+    kategoria: 'ruoka',
+    ikoni: '🥤',
+    kuvaus: 'Raikas sitruunalimonadi saunan jälkeen.',
+  },
 
   // --- VIIHDE ---
   {
     id: 'v1',
-    nimi: 'Pelikortti-pakka',
+    nimi: 'Pelikorttipakka',
     hinta: 2.49,
     kategoria: 'viihde',
     ikoni: '🃏',
@@ -251,11 +275,19 @@ export const products: Product[] = [
   },
   {
     id: 'v7',
-    nimi: 'Vaahtomuoviheitto-rengas',
+    nimi: 'Vaahtomuoviheittorengas',
     hinta: 3.99,
     kategoria: 'viihde',
     ikoni: '🪃',
     kuvaus: 'Pehmeä EVA-rengas, heitetään ja naapataan — hauska pihapeli.',
+  },
+  {
+    id: 'v8',
+    nimi: 'Saunakynttilä',
+    hinta: 2.49,
+    kategoria: 'viihde',
+    ikoni: '🕯️',
+    kuvaus: 'Tunnelmallinen tuoksukynttilä saunan eteiseen.',
   },
 ];
 
