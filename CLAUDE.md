@@ -10,7 +10,7 @@ ja edetä kassalle.
 - Tailwind CSS v4 — konfigurointi `src/index.css`:ssä `@import "tailwindcss"` + `@theme`-lohkossa (ei tailwind.config.js)
 - `@tailwindcss/vite` plugin (ei PostCSS)
 - Framer Motion v12
-- Gemini API — malli `gemini-3-flash-preview`, endpoint `v1beta`
+- OpenCode Zen API (OpenAI-yhteensopiva) — malli `deepseek-v4-flash`, endpoint `https://opencode.ai/zen/go/v1/chat/completions`. Kutsutaan **Vercel Edge Function** -proxyn `/api/generate` kautta (CORS estää suorat selainpyynnöt).
 
 ## Design
 - Värit: `--color-tokmanni-red: #E3000F`, `--color-tokmanni-red-dark: #B8000C`
@@ -18,7 +18,7 @@ ja edetä kassalle.
 - Ämpäri: `src/components/TokmanniBucket.tsx` — inline SVG, käytetään kaikkialla emojin sijaan
 
 ## Ympäristömuuttujat
-- `VITE_GEMINI_API_KEY` — `.env.local`-tiedostossa (gitignore'd)
+- `OPENCODE_API_KEY` — vain palvelinpuolella (Vercel Env Vars + `.env.local` lokaalia `vercel dev`-käyttöä varten). EI VITE_-prefixiä, jotta avain ei vuoda selainbundleen.
 
 ## Tiedostorakenne
 
@@ -30,7 +30,7 @@ ja edetä kassalle.
 - `src/components/Header.tsx` — sticky header, TokmanniLogo + navigaatio
 - `src/components/Hero.tsx` — punainen hero, iso ämpäri-animaatio
 - `src/components/PresetBuckets.tsx` — 3 valmista ämpäriä, whileInView-animaatiot
-- `src/components/AiBucketGenerator.tsx` — Gemini-generointi, ladataan BucketAnimation + kutsutaan `onResult(ids)`
+- `src/components/AiBucketGenerator.tsx` — ÄmpäriApuri-generointi (OpenCode/DeepSeek), ladataan BucketAnimation + kutsutaan `onResult(ids)`
 - `src/components/BucketBuilder.tsx` — stateless, vastaanottaa `selected/onToggle/onRemove/onClear/onCheckout` propseina
 - `src/components/ProductGrid.tsx` — tuotteet kategorioittain, checkboxit
 - `src/components/BucketPreview.tsx` — sticky oikea sarake, BONUS_PRODUCT aina näkyvissä
@@ -40,7 +40,8 @@ ja edetä kassalle.
 - `src/components/TokmanniLogo.tsx` — SVG-logo, punainen, ei taustaa
 
 ### Palvelu
-- `src/services/aiService.ts` — `generateBucket(prompt, productIds)`, `fetchWithRetry` (2 yritystä, 429 → exp. backoff 4s/8s)
+- `src/services/aiService.ts` — kutsuu `/api/generate`-proxya. `fetchWithRetry` (2 yritystä, 429 → exp. backoff 4s/8s)
+- `api/generate.ts` — Vercel Edge Function, lähettää käyttäjän kuvauksen + tuotelistan OpenCode Zen -palveluun ja palauttaa AI:n vastauksen. Avain `OPENCODE_API_KEY` luetaan `process.env`:istä.
 
 ## App-tason tila (`src/App.tsx`)
 - `selected: Set<string>` + `bucketName: string` — jaetaan alas
