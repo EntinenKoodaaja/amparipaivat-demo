@@ -80,6 +80,8 @@ async function readSseContent(body: ReadableStream<Uint8Array>): Promise<string>
     const { done, value } = await reader.read();
     if (done) break;
     buffer += decoder.decode(value, { stream: true });
+    // Normalisoi CRLF → LF jotta event-jako toimii
+    buffer = buffer.replace(/\r\n/g, '\n');
 
     // SSE-tapahtumat erottuvat tyhjällä rivillä
     const events = buffer.split('\n\n');
@@ -132,7 +134,13 @@ export async function generateBucketFromPrompt(
     throw new AiServiceError('ÄmpäriApuri ei palauttanut vastausta.');
   }
 
-  const text = await readSseContent(response.body);
+  let text: string;
+  try {
+    text = await readSseContent(response.body);
+  } catch (err) {
+    const detail = err instanceof Error ? err.message : String(err);
+    throw new AiServiceError(`Streamin lukeminen epäonnistui — ${detail}`);
+  }
 
   if (!text.trim()) {
     throw new AiServiceError('ÄmpäriApuri ei palauttanut vastausta.');
