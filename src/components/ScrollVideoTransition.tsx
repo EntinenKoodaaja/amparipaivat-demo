@@ -7,6 +7,12 @@ export default function ScrollVideoTransition() {
     const video = videoRef.current;
     if (!video) return;
 
+    // Kunnioita käyttäjän OS-tason "vähennä liikettä" -asetusta
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+    if (prefersReducedMotion) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
