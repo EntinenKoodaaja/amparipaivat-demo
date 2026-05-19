@@ -39,6 +39,13 @@ export default async function handler(req: Request): Promise<Response> {
     return jsonResponse({ error: 'userMessage puuttuu.' }, 400);
   }
 
+  if (userMessage.length > 500) {
+    return jsonResponse(
+      { error: 'userMessage on liian pitkä (max 500 merkkiä).' },
+      400,
+    );
+  }
+
   // Tiivistetty tuoteconteksti — kuvaus pois, säästää tokeneita ja generointiaikaa
   const productContext = products.map((p) => ({
     id: p.id,

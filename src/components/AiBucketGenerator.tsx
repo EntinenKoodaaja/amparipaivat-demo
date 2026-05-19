@@ -92,9 +92,17 @@ export default function AiBucketGenerator({ onResult }: Props) {
           onSubmit={handleSubmit}
           className="bg-white text-neutral-900 rounded-2xl p-4 sm:p-6 shadow-2xl"
         >
-          <label htmlFor="ai-prompt" className="block text-sm font-black uppercase tracking-widest text-tokmanni-red mb-2">
-            Kuvaile ämpärisi
-          </label>
+          <div className="flex items-baseline justify-between mb-2">
+            <label htmlFor="ai-prompt" className="block text-sm font-black uppercase tracking-widest text-tokmanni-red">
+              Kuvaile ämpärisi
+            </label>
+            <span
+              className={`text-xs font-bold ${prompt.length >= 500 ? 'text-tokmanni-red' : 'text-neutral-400'}`}
+              aria-live="polite"
+            >
+              {prompt.length}/500
+            </span>
+          </div>
           <textarea
             id="ai-prompt"
             value={prompt}
@@ -102,6 +110,7 @@ export default function AiBucketGenerator({ onResult }: Props) {
             placeholder="esim. festariämpäri kavereiden kanssa, budjetti 30€, tarvitsen hygieniatuotteita ja snackseja"
             rows={4}
             disabled={loading}
+            maxLength={500}
             className="w-full bg-neutral-50 border-2 border-neutral-200 focus:border-tokmanni-red focus:bg-white rounded-xl px-4 py-3 text-base outline-none transition-colors resize-none disabled:opacity-60"
             style={{ fontSize: '16px' }}
           />
