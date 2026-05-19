@@ -55,7 +55,7 @@ export default function PresetBuckets({ onSelect }: Props) {
                   >
                     <div className="relative inline-block">
                       <TokmanniBucket className="h-20 w-auto drop-shadow-md" />
-                      <span className="absolute -top-1 -right-3 text-2xl leading-none">
+                      <span aria-hidden="true" className="absolute -top-1 -right-3 text-2xl leading-none">
                         {THEME_EMOJIS[bucket.id]}
                       </span>
                     </div>
@@ -72,7 +72,7 @@ export default function PresetBuckets({ onSelect }: Props) {
                   <ul className="space-y-2">
                     {bucketProducts.map((p) => (
                       <li key={p.id} className="flex items-center gap-2">
-                        <span className="text-lg leading-none">{p.ikoni}</span>
+                        <span aria-hidden="true" className="text-lg leading-none">{p.ikoni}</span>
                         <span className="flex-1 text-sm text-neutral-700 font-medium leading-tight">
                           {p.nimi}
                         </span>

@@ -116,6 +116,7 @@ export default function BucketAnimation({ open, selectedIds, onClose, onCheckout
                   ease: [0.25, 1.5, 0.5, 1],
                   opacity: { times: [0, 0.2, 0.8, 1], duration: 0.9, delay: i * 0.18 },
                 }}
+                aria-hidden="true"
                 className="absolute bottom-28 sm:bottom-32 text-5xl sm:text-6xl drop-shadow-2xl"
                 style={{ filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.3))' }}
               >
@@ -191,10 +192,10 @@ export default function BucketAnimation({ open, selectedIds, onClose, onCheckout
                   className="absolute top-6 sm:top-12 left-1/2 -translate-x-1/2 text-center w-[90%] sm:w-auto"
                 >
                   <div className="bg-white text-tokmanni-red font-black text-2xl sm:text-3xl md:text-5xl px-5 sm:px-8 py-3 sm:py-4 rounded-2xl shadow-2xl rotate-[-2deg] tracking-tight">
-                    Ämpäri kasattu! 🎉
+                    Ämpäri kasattu! <span aria-hidden="true">🎉</span>
                   </div>
                   <p className="text-white font-bold mt-3 sm:mt-4 text-base sm:text-lg">
-                    Halvalla hyvää kesää! ☀️
+                    Halvalla hyvää kesää! <span aria-hidden="true">☀️</span>
                   </p>
                 </motion.div>
               )}

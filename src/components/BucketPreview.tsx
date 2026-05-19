@@ -59,7 +59,7 @@ export default function BucketPreview({ selected, onRemove, onClear, onAssemble 
           <ul className="divide-y divide-neutral-100 mb-4">
             {items.map((p) => (
               <li key={p.id} className="flex items-center gap-2 py-2">
-                <span className="text-lg leading-none">{p.ikoni}</span>
+                <span aria-hidden="true" className="text-lg leading-none">{p.ikoni}</span>
                 <span className="flex-1 text-sm font-medium text-neutral-800 leading-tight">
                   {p.nimi}
                 </span>
@@ -100,11 +100,11 @@ export default function BucketPreview({ selected, onRemove, onClear, onAssemble 
           <div className="mb-3">
             {isFull ? (
               <p className="text-xs font-black text-center text-tokmanni-red uppercase tracking-wide">
-                🪣 Ämpäri täynnä! (max {MAX_PRODUCTS} tuotetta)
+                <span aria-hidden="true">🪣</span> Ämpäri täynnä! (max {MAX_PRODUCTS} tuotetta)
               </p>
             ) : hasBonus ? (
               <p className="text-xs font-black text-center text-green-600 uppercase tracking-wide">
-                🎁 Ilmainen ämpäri ansaittu!
+                <span aria-hidden="true">🎁</span> Ilmainen ämpäri ansaittu!
               </p>
             ) : (
               <div>

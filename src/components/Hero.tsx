@@ -47,7 +47,7 @@ export default function Hero() {
         {/* Left: text content */}
         <div className="text-center md:text-left">
           <span className="inline-block bg-yellow-300 text-tokmanni-red font-black uppercase tracking-widest text-[10px] sm:text-xs px-3 sm:px-4 py-1 sm:py-1.5 rounded-full mb-4 sm:mb-6 shadow-md">
-            ☀️ Kesä 2026
+            <span aria-hidden="true">☀️</span> Kesä 2026
           </span>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[0.95] mb-4 sm:mb-6 tracking-tight">

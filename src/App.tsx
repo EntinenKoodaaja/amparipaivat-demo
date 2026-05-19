@@ -100,7 +100,7 @@ export default function App() {
       <footer className="bg-tokmanni-red text-white py-8 mt-20">
         <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-bold tracking-wide">TOKMANNI · ÄMPÄRIPÄIVÄT 2026</p>
-          <p className="text-sm opacity-90">Halvalla hyvää kesää! ☀️</p>
+          <p className="text-sm opacity-90">Halvalla hyvää kesää! <span aria-hidden="true">☀️</span></p>
         </div>
       </footer>
     </div>

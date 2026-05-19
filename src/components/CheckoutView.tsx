@@ -91,7 +91,7 @@ export default function CheckoutView({ selectedProducts, bucketName, onBack }: P
           <ul className="divide-y divide-neutral-100 px-5 sm:px-6">
             {selectedProducts.map((p) => (
               <li key={p.id} className="flex items-center gap-3 py-3">
-                <span className="text-xl leading-none">{p.ikoni}</span>
+                <span aria-hidden="true" className="text-xl leading-none">{p.ikoni}</span>
                 <span className="flex-1 font-medium text-neutral-800">{p.nimi}</span>
                 <span className="font-bold text-neutral-700">{fmt(p.hinta)}</span>
               </li>
@@ -137,7 +137,7 @@ export default function CheckoutView({ selectedProducts, bucketName, onBack }: P
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2 mb-2">
-                    <span className="text-3xl leading-none">{opt.ikoni}</span>
+                    <span aria-hidden="true" className="text-3xl leading-none">{opt.ikoni}</span>
                     <span
                       className={`font-black text-lg ${
                         isSelected ? 'text-tokmanni-red' : 'text-neutral-700'
@@ -209,7 +209,7 @@ export default function CheckoutView({ selectedProducts, bucketName, onBack }: P
               onClick={(e) => e.stopPropagation()}
               className="bg-white rounded-3xl p-6 sm:p-10 max-w-md w-full text-center shadow-2xl"
             >
-              <div className="text-6xl sm:text-7xl mb-3 sm:mb-4">🎉</div>
+              <div aria-hidden="true" className="text-6xl sm:text-7xl mb-3 sm:mb-4">🎉</div>
               <h2 className="text-2xl sm:text-3xl font-black text-tokmanni-red mb-2">
                 Tilaus vastaanotettu!
               </h2>

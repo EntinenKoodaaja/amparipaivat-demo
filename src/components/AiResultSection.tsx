@@ -27,7 +27,7 @@ export default function AiResultSection({ selectedIds, onEdit, onCheckout }: Pro
             animate={{ opacity: 1, y: 0 }}
             className="inline-block bg-yellow-300 text-tokmanni-red font-black uppercase tracking-widest text-[10px] sm:text-xs px-3 sm:px-4 py-1 sm:py-1.5 rounded-full mb-3 sm:mb-4 shadow-md"
           >
-            ✨ ÄmpäriApuri kokosi ämpärisi
+            <span aria-hidden="true">✨</span> ÄmpäriApuri kokosi ämpärisi
           </motion.span>
           <motion.h2
             initial={{ opacity: 0, y: 12 }}
@@ -52,6 +52,7 @@ export default function AiResultSection({ selectedIds, onEdit, onCheckout }: Pro
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.2 + i * 0.08, type: 'spring', stiffness: 200 }}
+                  aria-hidden="true"
                   className="absolute text-2xl sm:text-3xl select-none"
                   style={{
                     left: `calc(50% + (${Math.cos(rad).toFixed(4)} * min(40vw, 100px)) - 18px)`,
@@ -100,7 +101,7 @@ export default function AiResultSection({ selectedIds, onEdit, onCheckout }: Pro
                 transition={{ delay: 0.3 + i * 0.06 }}
                 className="bg-neutral-50 rounded-2xl p-4 border-2 border-neutral-100 flex items-center gap-3 hover:border-tokmanni-red hover:shadow-md transition-all"
               >
-                <span className="text-3xl leading-none">{p.ikoni}</span>
+                <span aria-hidden="true" className="text-3xl leading-none">{p.ikoni}</span>
                 <div className="flex-1 min-w-0">
                   <p className="font-bold text-sm truncate text-neutral-800">{p.nimi}</p>
                   <p className="text-xs text-neutral-500 truncate">{p.kuvaus}</p>
@@ -119,11 +120,11 @@ export default function AiResultSection({ selectedIds, onEdit, onCheckout }: Pro
                 transition={{ delay: 0.3 + selectedProducts.length * 0.06 }}
                 className="bg-yellow-50 rounded-2xl p-4 border-2 border-yellow-300 flex items-center gap-3"
               >
-                <span className="text-3xl leading-none">{BONUS_PRODUCT.ikoni}</span>
+                <span aria-hidden="true" className="text-3xl leading-none">{BONUS_PRODUCT.ikoni}</span>
                 <div className="flex-1 min-w-0">
                   <p className="font-bold text-sm truncate text-neutral-800">{BONUS_PRODUCT.nimi}</p>
                   <p className="text-xs text-neutral-500 truncate">{BONUS_PRODUCT.kuvaus}</p>
-                  <p className="text-green-600 font-black text-sm mt-0.5">Ilmainen! 🎁</p>
+                  <p className="text-green-600 font-black text-sm mt-0.5">Ilmainen! <span aria-hidden="true">🎁</span></p>
                 </div>
               </motion.div>
             )}

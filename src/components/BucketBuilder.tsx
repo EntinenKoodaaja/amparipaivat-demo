@@ -87,7 +87,13 @@ export default function BucketBuilder({ selected, onToggle, onRemove, onClear, o
             ) : (
               <>
                 <p className="text-xs font-bold text-neutral-500 uppercase tracking-wide truncate">
-                  {hasBonus ? '🎁 Ilmainen ämpäri!' : `${items.length}/8 tuotetta`}
+                  {hasBonus ? (
+                    <>
+                      <span aria-hidden="true">🎁</span> Ilmainen ämpäri!
+                    </>
+                  ) : (
+                    `${items.length}/8 tuotetta`
+                  )}
                 </p>
                 <p className="text-xl font-black text-tokmanni-red leading-tight">
                   {total.toFixed(2).replace('.', ',')} €

@@ -9,12 +9,24 @@ interface Props {
 export default function ProductGrid({ selected, onToggle, isFull = false }: Props) {
   return (
     <div className="space-y-6 sm:space-y-8">
+      {isFull && (
+        <div
+          role="status"
+          className="bg-yellow-50 border-2 border-yellow-300 text-yellow-900 font-bold px-4 py-3 rounded-xl flex items-start gap-3"
+        >
+          <span aria-hidden="true" className="text-xl leading-none">⚠️</span>
+          <p className="text-sm leading-snug">
+            Ämpärisi on täynnä (maksimi 8 tuotetta) — poista jokin tuote
+            ennen kuin lisäät toisen.
+          </p>
+        </div>
+      )}
       {kategoriat.map((kat) => {
         const items = products.filter((p) => p.kategoria === kat.id);
         return (
           <div key={kat.id}>
             <h3 className="flex items-center gap-2 text-xs sm:text-sm font-black uppercase tracking-widest text-tokmanni-red mb-2 sm:mb-3 sticky top-[57px] sm:top-[68px] bg-white/95 backdrop-blur-sm py-2 z-10 -mx-1 px-1">
-              <span>{kat.ikoni}</span>
+              <span aria-hidden="true">{kat.ikoni}</span>
               <span>{kat.nimi}</span>
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2">
@@ -53,7 +65,7 @@ export default function ProductGrid({ selected, onToggle, isFull = false }: Prop
                         </svg>
                       )}
                     </span>
-                    <span className="text-xl leading-none">{p.ikoni}</span>
+                    <span aria-hidden="true" className="text-xl leading-none">{p.ikoni}</span>
                     <div className="flex-1 min-w-0">
                       <p className="font-bold text-sm text-neutral-900 leading-tight">{p.nimi}</p>
                       <p className="text-xs text-neutral-500 truncate">{p.kuvaus}</p>

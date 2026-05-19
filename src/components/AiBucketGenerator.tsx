@@ -75,7 +75,7 @@ export default function AiBucketGenerator({ onResult }: Props) {
       <div className="relative max-w-3xl mx-auto px-5 sm:px-6">
         <div className="text-center mb-6 sm:mb-8">
           <span className="inline-block bg-yellow-300 text-tokmanni-red font-black uppercase tracking-widest text-[10px] sm:text-xs px-3 sm:px-4 py-1 sm:py-1.5 rounded-full mb-3 sm:mb-4 shadow-md">
-            ✨ ÄmpäriApuri
+            <span aria-hidden="true">✨</span> ÄmpäriApuri
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-3">
             Anna ÄmpäriApurin koota <br className="sm:hidden" />
@@ -115,7 +115,7 @@ export default function AiBucketGenerator({ onResult }: Props) {
                 disabled={loading}
                 className="text-xs font-bold text-tokmanni-red bg-red-50 hover:bg-red-100 px-3 py-1.5 rounded-full border border-red-200 transition-colors disabled:opacity-60"
               >
-                💡 {vinkki}
+                <span aria-hidden="true">💡</span> {vinkki}
               </button>
             ))}
           </div>
@@ -152,6 +152,7 @@ export default function AiBucketGenerator({ onResult }: Props) {
                   className="inline-flex items-center gap-2"
                 >
                   <motion.span
+                    aria-hidden="true"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1.2, repeat: Infinity, ease: 'linear' }}
                     className="inline-block"
@@ -162,7 +163,7 @@ export default function AiBucketGenerator({ onResult }: Props) {
                 </motion.span>
               </AnimatePresence>
             ) : (
-              <>Luo ämpäri ✨</>
+              <>Luo ämpäri <span aria-hidden="true">✨</span></>
             )}
           </button>
 
