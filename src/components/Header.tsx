@@ -22,7 +22,7 @@ export default function Header() {
             Valmiit ämpärit
           </a>
           <a
-            href="#rakenna"
+            href="#ai"
             className="hidden sm:inline text-neutral-700 font-bold hover:text-tokmanni-red transition-colors whitespace-nowrap"
           >
             Rakenna oma
