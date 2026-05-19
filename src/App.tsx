@@ -8,7 +8,6 @@ import CheckoutView from './components/CheckoutView';
 import ScrollVideoTransition from './components/ScrollVideoTransition';
 import AiResultSection from './components/AiResultSection';
 import { products } from './data/products';
-import { presetBuckets } from './data/presetBuckets';
 
 export default function App() {
   const [selected, setSelected] = useState<Set<string>>(new Set());
@@ -61,13 +60,6 @@ export default function App() {
     }, 50);
   };
 
-  const loadPresetById = (ids: string[]) => {
-    const preset = presetBuckets.find((b) =>
-      b.tuoteIdt.length === ids.length && ids.every((id) => b.tuoteIdt.includes(id)),
-    );
-    loadPreset(ids, preset?.nimi);
-  };
-
   const selectedProducts = products.filter((p) => selected.has(p.id));
 
   if (showCheckout) {
@@ -86,14 +78,7 @@ export default function App() {
       <main>
         <Hero />
         <ScrollVideoTransition />
-        <PresetBuckets
-          onSelect={(ids) => {
-            const preset = presetBuckets.find((b) =>
-              b.tuoteIdt.length === ids.length && ids.every((id) => b.tuoteIdt.includes(id)),
-            );
-            loadPreset(ids, preset?.nimi);
-          }}
-        />
+        <PresetBuckets onSelect={(bucket) => loadPreset(bucket.tuoteIdt, bucket.nimi)} />
         <AiBucketGenerator onResult={handleAiResult} />
         {aiResultIds && (
           <AiResultSection

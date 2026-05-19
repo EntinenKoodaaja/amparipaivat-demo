@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
-import { presetBuckets } from '../data/presetBuckets';
+import { presetBuckets, type PresetBucket } from '../data/presetBuckets';
 import { products } from '../data/products';
 import TokmanniBucket from './TokmanniBucket';
 
 interface Props {
-  onSelect: (ids: string[]) => void;
+  onSelect: (bucket: PresetBucket) => void;
 }
 
 const THEME_EMOJIS: Record<string, string> = {
@@ -99,7 +99,7 @@ export default function PresetBuckets({ onSelect }: Props) {
                   </div>
                   <motion.button
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => onSelect(bucket.tuoteIdt)}
+                    onClick={() => onSelect(bucket)}
                     className="w-full text-white font-black py-3 rounded-full uppercase tracking-wider text-sm shadow-md transition-opacity hover:opacity-90"
                     style={{ backgroundColor: bucket.teemaväri }}
                   >
