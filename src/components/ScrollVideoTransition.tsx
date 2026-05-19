@@ -34,10 +34,11 @@ export default function ScrollVideoTransition() {
       <video
         ref={videoRef}
         src="/tokmanni-bucket.mp4"
+        poster="/tokmanni-bucket-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover"
         muted
         playsInline
-        preload="auto"
+        preload="metadata"
       />
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white to-transparent pointer-events-none" />
     </section>

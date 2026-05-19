@@ -83,4 +83,14 @@ describe('ScrollVideoTransition: prefers-reduced-motion', () => {
 
     expect(playMock).toHaveBeenCalled();
   });
+
+  test('video-elementissä on poster-attribuutti (ei mustaa neliötä latauksen aikana)', () => {
+    mockMatchMedia(false);
+    const { container } = render(<ScrollVideoTransition />);
+
+    const video = container.querySelector('video');
+    expect(video).not.toBeNull();
+    expect(video).toHaveAttribute('poster');
+    expect(video!.getAttribute('poster')).not.toBe('');
+  });
 });

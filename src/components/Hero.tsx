@@ -115,8 +115,10 @@ export default function Hero() {
 
             <div className="relative overflow-hidden">
               <img
-                src="/tokmanni-bucket-photo.png"
+                src="/tokmanni-bucket-photo.webp"
                 alt="Tokmanni ämpäri"
+                width={1024}
+                height={1024}
                 className="h-[38vh] sm:h-[55vh] md:h-[60vh] lg:h-[80vh] w-auto block"
                 style={{ maxHeight: '680px' }}
               />
