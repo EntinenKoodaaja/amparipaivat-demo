@@ -1,3 +1,5 @@
+import { useLayoutEffect, useRef, useState } from 'react';
+
 interface Props {
   className?: string;
 }
@@ -6,8 +8,21 @@ export default function TokmanniLogo({ className }: Props) {
   const color = '#E3000F';
   const h = 64;
   const r = h * 0.38;
-  const gap = h * 0.08;      // kirjainten välinen tila
-  const tWidth = h * 0.68;   // T-kirjaimen leveys Arial Blackissa
+  const gap = h * 0.02;       // tiivis välimatka T-O-KMANNI
+  const tWidthFallback = h * 0.55; // arvio jos getBBox ei vielä ole ajettu
+
+  // Mittaa T-kirjaimen todellinen leveys renderöinnin jälkeen, jotta O istuu
+  // tiiviisti T:n vieressä riippumatta käytetystä fontista (Arial Black vs
+  // Impact vs system fallback)
+  const tRef = useRef<SVGTextElement>(null);
+  const [tWidth, setTWidth] = useState(tWidthFallback);
+
+  useLayoutEffect(() => {
+    // getBBox on saatavilla vain oikeassa selainympäristössä, ei jsdomissa
+    const measured = tRef.current?.getBBox?.().width;
+    if (measured && measured > 0) setTWidth(measured);
+  }, []);
+
   const cx = tWidth + gap + r;
   const cy = h * 0.48;
 
@@ -22,6 +37,7 @@ export default function TokmanniLogo({ className }: Props) {
     >
       {/* T */}
       <text
+        ref={tRef}
         x="0"
         y={h * 0.82}
         fontFamily="'Arial Black','Impact','Helvetica Neue',sans-serif"
