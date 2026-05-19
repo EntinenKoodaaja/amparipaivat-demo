@@ -51,6 +51,7 @@ export default function App() {
   const handleAiResult = (ids: string[]) => {
     setSelected(new Set(ids));
     setAiResultIds(ids);
+    setBucketName('Oma ämpäri');
   };
 
   const handleEditAi = () => {
