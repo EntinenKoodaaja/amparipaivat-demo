@@ -38,7 +38,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.35, ease: [0.25, 1, 0.5, 1], staggerChildren: 0.07 },
+    transition: { duration: 0.35, ease: [0.25, 1, 0.5, 1] as const, staggerChildren: 0.07 },
   },
 };
 
@@ -166,6 +166,10 @@ export default function CheckoutView({ selectedProducts, bucketName, onBack }: P
           <div className="flex justify-between text-neutral-600 font-medium">
             <span>Toimitus</span>
             <span>{deliveryCost === 0 ? 'Ilmainen' : fmt(deliveryCost)}</span>
+          </div>
+          <div className="flex justify-between text-neutral-600 font-medium">
+            <span>Ämpäri</span>
+            <span>{hasBonus ? 'Ilmainen' : fmt(bucketCost)}</span>
           </div>
           <div className="flex justify-between items-baseline pt-3 border-t-2 border-neutral-100">
             <span className="font-black text-neutral-900 text-base sm:text-lg uppercase tracking-wide">Yhteensä</span>
