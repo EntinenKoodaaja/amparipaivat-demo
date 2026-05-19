@@ -3,11 +3,11 @@ import { render, screen } from '@testing-library/react';
 import Header from './Header';
 
 describe('Header: navigaatiolinkit', () => {
-  test('"Rakenna oma" -linkki ohjaa rakennusosioon (#rakenna), ei #ai', () => {
+  test('"Rakenna oma" -linkki ohjaa ÄmpäriApuriin (#ai)', () => {
     render(<Header />);
 
     const link = screen.getByRole('link', { name: /Rakenna oma/i });
-    expect(link).toHaveAttribute('href', '#rakenna');
+    expect(link).toHaveAttribute('href', '#ai');
   });
 
   test('"Valmiit ämpärit" -linkki ohjaa preset-osioon (#valmiit)', () => {
