@@ -25,7 +25,7 @@ export default function Header() {
             href="#ai"
             className="hidden sm:inline text-neutral-700 font-bold hover:text-tokmanni-red transition-colors whitespace-nowrap"
           >
-            Rakenna oma
+            Ämpäriapuri
           </a>
         </nav>
 

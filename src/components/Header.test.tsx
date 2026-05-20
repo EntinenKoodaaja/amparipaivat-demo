@@ -3,10 +3,10 @@ import { render, screen } from '@testing-library/react';
 import Header from './Header';
 
 describe('Header: navigaatiolinkit', () => {
-  test('"Rakenna oma" -linkki ohjaa ÄmpäriApuriin (#ai)', () => {
+  test('"Ämpäriapuri" -linkki ohjaa aina näkyvissä olevaan AI-osioon (#ai)', () => {
     render(<Header />);
 
-    const link = screen.getByRole('link', { name: /Rakenna oma/i });
+    const link = screen.getByRole('link', { name: /Ämpäriapuri/i });
     expect(link).toHaveAttribute('href', '#ai');
   });
 

@@ -68,10 +68,10 @@ export default function Hero() {
 
           <div className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto md:max-w-none md:mx-0">
             <a
-              href="#rakenna"
+              href="#ai"
               className="inline-flex justify-center items-center bg-white text-tokmanni-red font-black px-6 sm:px-7 py-3.5 sm:py-4 rounded-full uppercase tracking-wider shadow-lg hover:scale-105 active:scale-95 transition-transform text-sm sm:text-base"
             >
-              Rakenna oma →
+              Ämpäriapuri →
             </a>
             <a
               href="#valmiit"
